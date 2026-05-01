@@ -1,7 +1,6 @@
 ---
 name: pdf
 description: 当用户想要对PDF文件进行任何操作时使用此技能。这包括读取或从PDF中提取文本/表格、将多个PDF合并为一个、拆分PDF、旋转页面、添加水印、创建新PDF、填写PDF表单、加密/解密PDF、提取图片，以及对扫描版PDF进行OCR使其可搜索。如果用户提到.pdf文件或要求生成一个，使用此技能。
-license: 专有。完整条款见LICENSE.txt
 ---
 
 # PDF处理指南
@@ -30,6 +29,7 @@ for page in reader.pages:
 ### pypdf - 基本操作
 
 #### 合并PDF
+
 ```python
 from pypdf import PdfWriter, PdfReader
 
@@ -44,6 +44,7 @@ with open("merged.pdf", "wb") as output:
 ```
 
 #### 拆分PDF
+
 ```python
 reader = PdfReader("input.pdf")
 for i, page in enumerate(reader.pages):
@@ -54,6 +55,7 @@ for i, page in enumerate(reader.pages):
 ```
 
 #### 提取元数据
+
 ```python
 reader = PdfReader("document.pdf")
 meta = reader.metadata
@@ -64,6 +66,7 @@ print(f"创建者: {meta.creator}")
 ```
 
 #### 旋转页面
+
 ```python
 reader = PdfReader("input.pdf")
 writer = PdfWriter()
@@ -79,6 +82,7 @@ with open("rotated.pdf", "wb") as output:
 ### pdfplumber - 文本和表格提取
 
 #### 保留布局提取文本
+
 ```python
 import pdfplumber
 
@@ -89,6 +93,7 @@ with pdfplumber.open("document.pdf") as pdf:
 ```
 
 #### 提取表格
+
 ```python
 with pdfplumber.open("document.pdf") as pdf:
     for i, page in enumerate(pdf.pages):
@@ -100,6 +105,7 @@ with pdfplumber.open("document.pdf") as pdf:
 ```
 
 #### 高级表格提取
+
 ```python
 import pandas as pd
 
@@ -121,6 +127,7 @@ if all_tables:
 ### reportlab - 创建PDF
 
 #### 基础PDF创建
+
 ```python
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
@@ -140,6 +147,7 @@ c.save()
 ```
 
 #### 创建多页PDF
+
 ```python
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
@@ -171,6 +179,7 @@ doc.build(story)
 **重要**：永远不要在ReportLab PDF中使用Unicode下标/上标字符（₀₁₂₃₄₅₆₇₈₉、⁰¹²³⁴⁵⁶⁷⁸⁹）。内置字体不包含这些字形，会导致它们渲染为实心黑框。
 
 相反，在Paragraph对象中使用ReportLab的XML标记标签：
+
 ```python
 from reportlab.platypus import Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
@@ -189,6 +198,7 @@ squared = Paragraph("x<super>2</super> + y<super>2</super>", styles['Normal'])
 ## 命令行工具
 
 ### pdftotext (poppler-utils)
+
 ```bash
 # 提取文本
 pdftotext input.pdf output.txt
@@ -201,6 +211,7 @@ pdftotext -f 1 -l 5 input.pdf output.txt  # 第1-5页
 ```
 
 ### qpdf
+
 ```bash
 # 合并PDF
 qpdf --empty --pages file1.pdf file2.pdf -- merged.pdf
@@ -217,6 +228,7 @@ qpdf --password=mypassword --decrypt encrypted.pdf decrypted.pdf
 ```
 
 ### pdftk（如果可用）
+
 ```bash
 # 合并
 pdftk file1.pdf file2.pdf cat output merged.pdf
@@ -231,6 +243,7 @@ pdftk input.pdf rotate 1east output rotated.pdf
 ## 常见任务
 
 ### 从扫描版PDF提取文本
+
 ```python
 # 需要: pip install pytesseract pdf2image
 import pytesseract
@@ -250,6 +263,7 @@ print(text)
 ```
 
 ### 添加水印
+
 ```python
 from pypdf import PdfReader, PdfWriter
 
@@ -269,6 +283,7 @@ with open("watermarked.pdf", "wb") as output:
 ```
 
 ### 提取图片
+
 ```bash
 # 使用pdfimages (poppler-utils)
 pdfimages -j input.pdf output_prefix
@@ -277,6 +292,7 @@ pdfimages -j input.pdf output_prefix
 ```
 
 ### 密码保护
+
 ```python
 from pypdf import PdfReader, PdfWriter
 
@@ -296,7 +312,7 @@ with open("encrypted.pdf", "wb") as output:
 ## 快速参考
 
 | 任务 | 最佳工具 | 命令/代码 |
-|------|-----------|--------------|
+| ------ | ----------- | -------------- |
 | 合并PDF | pypdf | `writer.add_page(page)` |
 | 拆分PDF | pypdf | 每页一个文件 |
 | 提取文本 | pdfplumber | `page.extract_text()` |

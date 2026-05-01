@@ -416,7 +416,7 @@ python scripts/office/unpack.py document.docx unpacked/
 
 编辑`unpacked/word/`中的文件。参考下方XML参考部分的模式。
 
-**修订和评论默认使用"Claude"作为作者**，除非用户明确要求使用其他名称。
+**修订和评论默认使用"Opencode"作为作者**，除非用户明确要求使用其他名称。
 
 **直接使用Edit工具进行字符串替换。不要编写Python脚本。** 脚本会引入不必要的复杂度。Edit工具会显示确切的替换内容。
 
@@ -481,7 +481,7 @@ python scripts/office/pack.py unpacked/ output.docx --original document.docx
 **插入：**
 
 ```xml
-<w:ins w:id="1" w:author="Claude" w:date="2025-01-01T00:00:00Z">
+<w:ins w:id="1" w:author="Opencode" w:date="2025-01-01T00:00:00Z">
   <w:r><w:t>插入的文本</w:t></w:r>
 </w:ins>
 ```
@@ -489,7 +489,7 @@ python scripts/office/pack.py unpacked/ output.docx --original document.docx
 **删除：**
 
 ```xml
-<w:del w:id="2" w:author="Claude" w:date="2025-01-01T00:00:00Z">
+<w:del w:id="2" w:author="Opencode" w:date="2025-01-01T00:00:00Z">
   <w:r><w:delText>删除的文本</w:delText></w:r>
 </w:del>
 ```
@@ -501,10 +501,10 @@ python scripts/office/pack.py unpacked/ output.docx --original document.docx
 ```xml
 <!-- 将"30天"改为"60天" -->
 <w:r><w:t>期限为 </w:t></w:r>
-<w:del w:id="1" w:author="Claude" w:date="...">
+<w:del w:id="1" w:author="Opencode" w:date="...">
   <w:r><w:delText>30</w:delText></w:r>
 </w:del>
-<w:ins w:id="2" w:author="Claude" w:date="...">
+<w:ins w:id="2" w:author="Opencode" w:date="...">
   <w:r><w:t>60</w:t></w:r>
 </w:ins>
 <w:r><w:t> 天。</w:t></w:r>
@@ -517,10 +517,10 @@ python scripts/office/pack.py unpacked/ output.docx --original document.docx
   <w:pPr>
     <w:numPr>...</w:numPr>  <!-- 列表编号（如果存在） -->
     <w:rPr>
-      <w:del w:id="1" w:author="Claude" w:date="2025-01-01T00:00:00Z"/>
+      <w:del w:id="1" w:author="Opencode" w:date="2025-01-01T00:00:00Z"/>
     </w:rPr>
   </w:pPr>
-  <w:del w:id="2" w:author="Claude" w:date="2025-01-01T00:00:00Z">
+  <w:del w:id="2" w:author="Opencode" w:date="2025-01-01T00:00:00Z">
     <w:r><w:delText>正在删除的整个段落内容...</w:delText></w:r>
   </w:del>
 </w:p>
@@ -532,7 +532,7 @@ python scripts/office/pack.py unpacked/ output.docx --original document.docx
 
 ```xml
 <w:ins w:author="Jane" w:id="5">
-  <w:del w:author="Claude" w:id="10">
+  <w:del w:author="Opencode" w:id="10">
     <w:r><w:delText>他们插入的文本</w:delText></w:r>
   </w:del>
 </w:ins>
@@ -544,7 +544,7 @@ python scripts/office/pack.py unpacked/ output.docx --original document.docx
 <w:del w:author="Jane" w:id="5">
   <w:r><w:delText>删除的文本</w:delText></w:r>
 </w:del>
-<w:ins w:author="Claude" w:id="10">
+<w:ins w:author="Opencode" w:id="10">
   <w:r><w:t>删除的文本</w:t></w:r>
 </w:ins>
 ```
@@ -558,7 +558,7 @@ python scripts/office/pack.py unpacked/ output.docx --original document.docx
 ```xml
 <!-- 评论标记是w:p的直接子元素，绝不能放在w:r内部 -->
 <w:commentRangeStart w:id="0"/>
-<w:del w:id="1" w:author="Claude" w:date="2025-01-01T00:00:00Z">
+<w:del w:id="1" w:author="Opencode" w:date="2025-01-01T00:00:00Z">
   <w:r><w:delText>删除的</w:delText></w:r>
 </w:del>
 <w:r><w:t> 更多文本</w:t></w:r>

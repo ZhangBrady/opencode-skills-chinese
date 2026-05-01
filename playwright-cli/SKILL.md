@@ -5,6 +5,7 @@ allowed-tools: Bash(playwright-cli:*) Bash(npx:*) Bash(npm:*)
 ---
 
 # playwright-cli 浏览器自动化工具
+
 > 🔴 ⚠️ 【强制规则，必须遵守】⚠️ 🔴
 > 🔴 所有调用`playwright-cli open`的命令，必须默认加上`--headed`参数！
 > 🔴 仅用户明确要求使用无头模式时，才可去掉该参数！
@@ -180,6 +181,7 @@ playwright-cli --raw localstorage-get theme
 ```
 
 ## 启动参数
+
 ```bash
 # 启动时指定使用的浏览器，可选值：chrome, firefox, webkit, msedge
 playwright-cli open --browser=chrome

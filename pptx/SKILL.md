@@ -1,7 +1,6 @@
 ---
 name: pptx
 description: "任何时候只要涉及.pptx文件——无论是作为输入、输出还是两者兼有——就使用此技能。这包括：创建幻灯片、推介文件或演示文稿；读取、解析或提取任何.pptx文件中的文本（即使提取的内容将用于其他地方，比如邮件或摘要）；编辑、修改或更新现有演示文稿；合并或拆分幻灯片文件；处理模板、布局、演讲者备注或注释。只要用户提到"deck"、"slides"、"presentation"或引用.pptx文件名，无论他们后续打算如何处理内容，都要触发此技能。如果需要打开、创建或处理.pptx文件，使用此技能。"
-license: 专有。完整条款见LICENSE.txt
 ---
 
 # PPTX 技能
@@ -9,7 +8,7 @@ license: 专有。完整条款见LICENSE.txt
 ## 快速参考
 
 | 任务 | 指南 |
-|------|-------|
+| ------ | ------- |
 | 读取/分析内容 | `python -m markitdown presentation.pptx` |
 | 基于模板编辑或创建 | 阅读 [editing.md](editing.md) |
 | 从零开始创建 | 阅读 [pptxgenjs.md](pptxgenjs.md) |
@@ -81,34 +80,24 @@ python scripts/office/unpack.py presentation.pptx unpacked/
 **每张幻灯片都需要视觉元素**——图片、图表、图标或形状。纯文字的幻灯片容易被遗忘。
 
 **布局选项：**
+
 - 双栏布局（文字在左，插图在右）
 - 图标+文字行（图标放在彩色圆形中，粗体标题，描述在下方）
 - 2x2或2x3网格（一侧放图片，另一侧放内容块网格）
 - 半出血图片（左侧或右侧全满）配合内容叠加
 
 **数据展示：**
+
 - 大型数据标注（60-72pt大数字，下方配小标签）
 - 对比列（前/后、优/劣、并排选项）
 - 时间线或流程图（编号步骤、箭头）
 
 **视觉润色：**
+
 - 章节标题旁放置彩色小圆形图标
 - 关键数据或标语使用斜体强调
 
 ### 排版
-
-**选择有趣的字体组合**——不要默认使用Arial。选择有特色的标题字体，搭配干净的正文字体。
-
-| 标题字体 | 正文字体 |
-|-------------|-----------|
-| Georgia | Calibri |
-| Arial Black | Arial |
-| Calibri | Calibri Light |
-| Cambria | Calibri |
-| Trebuchet MS | Calibri |
-| Impact | Arial |
-| Palatino | Garamond |
-| Consolas | Calibri |
 
 | 元素 | 字号 |
 |---------|------|
